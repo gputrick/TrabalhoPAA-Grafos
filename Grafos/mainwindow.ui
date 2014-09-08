@@ -6,82 +6,176 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>613</width>
-    <height>421</height>
+    <width>641</width>
+    <height>455</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Projeto e Analise de Algoritmos (Ciência da Compuação)</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QComboBox" name="cbOrigem">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>20</y>
-      <width>191</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelInicial">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>20</y>
-      <width>101</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Select initial node:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelFinal">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>80</y>
-      <width>121</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Select final node:</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="cbFinal">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>80</y>
-      <width>191</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>160</y>
-      <width>191</width>
+      <x>10</x>
+      <y>330</y>
+      <width>621</width>
       <height>81</height>
      </rect>
     </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QTextEdit" name="textEdit">
+       <property name="undoRedoEnabled">
+        <bool>false</bool>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Mostrar Caminho</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>260</y>
-      <width>131</width>
-      <height>23</height>
+      <x>8</x>
+      <y>10</y>
+      <width>621</width>
+      <height>56</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Mostrar Caminho</string>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="labelInicial">
+           <property name="text">
+            <string>Select initial node:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Algorithm:</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <item>
+          <widget class="QComboBox" name="cbOrigem"/>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox">
+           <item>
+            <property name="text">
+             <string>Deep-fist Search</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Breadth-first Search</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Topological Sort</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Dijkstra Algorithm</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Prim Algorithm</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Kruskal Algorithm</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Ford-Fulkerson Algorithm</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="labelFinal">
+           <property name="text">
+            <string>Select final node:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="cbFinal"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -89,8 +183,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>613</width>
-     <height>20</height>
+     <width>641</width>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuGrafos">
@@ -98,33 +192,19 @@
      <string>Grafos</string>
     </property>
     <addaction name="actionLoad"/>
+    <addaction name="actionSair"/>
    </widget>
    <addaction name="menuGrafos"/>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-   <addaction name="actionLoad"/>
-  </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QToolBar" name="toolBar">
-   <property name="windowTitle">
-    <string>toolBar</string>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
   <action name="actionLoad">
    <property name="text">
     <string>Carregar</string>
+   </property>
+  </action>
+  <action name="actionSair">
+   <property name="text">
+    <string>Sair</string>
    </property>
   </action>
  </widget>

@@ -5,6 +5,8 @@
 
 #include <grafo.h>
 
+#include <QRect>
+#include <QDesktopWidget>
 #include <QPainter>
 #include <QPaintEvent>
 
@@ -27,7 +29,7 @@ public slots:
 
 private slots:
     void on_actionLoad_triggered();
-
+    void on_actionSair_triggered();
     void on_pushButton_clicked();
 
 private:
