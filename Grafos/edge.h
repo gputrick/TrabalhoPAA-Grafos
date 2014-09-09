@@ -7,16 +7,16 @@ class Edge
 {
 private:
     Edge *next;
-    int coordX;
-    int coordY;
+    int Id1;
+    int Id2;
     int weight;
 
 public:
-    Edge(int coordX, int coordY, int weight);
-    static void append(Edge **edge, int coordX, int coordY, int weight);
+    Edge(int Id1, int Id2, int weight);
+    static void append(Edge **edge, int Id1, int Id2, int weight);
     int getWeight();
-    int getCoordX();
-    int getCoordY();
+    int getId1();
+    int getId2();
     Edge *getNext();
     ~Edge();
 };

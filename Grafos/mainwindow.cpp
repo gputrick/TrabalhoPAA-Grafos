@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "Algorithms/breadthfirstsearch.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -36,8 +37,8 @@ void MainWindow::paintEvent(QPaintEvent *) {
     for (int i = 0; i < n; i++) {
         e = vertex[i]->getEdge();
         while (e!=NULL) {
-            v1 = vertex[e->getCoordX()];
-            v2 = vertex[e->getCoordY()];
+            v1 = vertex[e->getId1()];
+            v2 = vertex[e->getId2()];
             painter.drawLine( QPoint (v1->getX(), v1->getY()), QPoint (v2->getX(), v2->getY()) );
             e = e->getNext();
         }
@@ -142,5 +143,6 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::on_pushButton_clicked(){
+    BreadthFirstSearch* BFS = new BreadthFirstSearch(this->tmp->getVertex());
     QMessageBox::about(this,"teste","eba");
 }
