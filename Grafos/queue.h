@@ -15,7 +15,7 @@ private:
 public:
     Queue();
     void append(type *v);
-    Element<type> *popBegin();
+    type *popBegin();
     type *extractLess();
     bool isEmpty();
     ~Queue();

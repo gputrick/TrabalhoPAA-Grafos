@@ -143,6 +143,6 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::on_pushButton_clicked(){
-    BreadthFirstSearch* BFS = new BreadthFirstSearch(this->tmp->getVertex());
+    BreadthFirstSearch* BFS = new BreadthFirstSearch(this->graph);
     QMessageBox::about(this,"teste","eba");
 }

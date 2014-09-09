@@ -29,7 +29,7 @@ type *Element<type>::getElement()
 template <class type>
 Element<type>::~Element()
 {
-    if(next != nullptr){
+    if(next != NULL){
         delete next;
     }
 }

@@ -1,34 +1,45 @@
 #include "breadthfirstsearch.h"
 #include "queue.h"
 
-BreadthFirstSearch::BreadthFirstSearch(Vertex **vertex)
+void BreadthFirstSearch::run()
 {
+    Vertex **vertex = graph->getVertex();
     int size = 11; //hack
-    Queue *queue = new Queue();
+    Queue<Vertex> *Q = new Queue<Vertex>();
     Vertex  *v, *va;
     Edge *edge;
     for(int i = 1; i < size; i++){
-        vertex[i]->setFather(NULL);
+        vertex[i]->setParent(NULL);
         vertex[i]->setColor(Qt::white);
         vertex[i]->setDistance(INT_MAX);
     }
-    vertex[0]->setFather(NULL);
+    vertex[0]->setParent(NULL);
     vertex[0]->setColor(Qt::gray);
     vertex[0]->setDistance(INT_MAX);
-    queue->append(vertex);
-    while(!queue->isEmpty()){
-        v = (Vertex*)queue->popBegin();
+    Q->append(vertex[0]);
+    while(!Q->isEmpty()){
+        v = (Vertex*)Q->popBegin();
+        qDebug() <<"------------------- vertice = "<< v->getName();
         for(edge = v->getEdge(); edge != NULL; edge = edge->getNext()){
+            qDebug() << "Visitou ID2 = "<< edge->getId2();
             va = vertex[edge->getId2()];
             if(va->getColor() == Qt::white){
                 va->setColor(Qt::gray);
-                qDebug() << "funcionou?";
-                va->setFather(v);
+                qDebug() << "Pintou de cinza";
+                va->setParent(v);
                 va->setDistance(v->getDistance()+1);
-                queue->append(va);
-            }
-            v->setColor(Qt::black);
+                Q->append(va);
+            }else qDebug() << "ja esta cinza";
         }
+        v->setColor(Qt::black);
+        qDebug() << "pintou de preto";
     }
-    delete queue;
+    qDebug() << "Saiu!!!!!!";
+    delete Q;
+}
+
+BreadthFirstSearch::BreadthFirstSearch(Graph *graph)
+{
+    this->graph = graph;
+    this->run();
 }

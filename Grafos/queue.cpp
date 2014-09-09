@@ -23,19 +23,17 @@ void Queue<type>::append(type *v)
 }
 
 template <class type>
-Element<type> *Queue<type>::popBegin()
+type *Queue<type>::popBegin()
 {
     Element<type> *e = NULL;
     Element<type> *tmp;
-
     if(first != NULL){
-        e = first->getElement();
+        e = first;
         tmp = first;
         first = first->getNext();
-        delete tmp;
+        tmp = tmp->getNext();
     }
-
-    return e;
+    return e->getElement();
 }
 
 template <class type>
@@ -61,7 +59,12 @@ type *Queue<type>::extractLess()
 template <class type>
 bool Queue<type>::isEmpty()
 {
-    return (first == NULL);
+    qDebug() << "Entrou";
+    qDebug() << "first is = "<< first;
+    while(first != NULL){
+
+    }
+    return (first->getNext() == NULL);
 }
 
 template <class type>
