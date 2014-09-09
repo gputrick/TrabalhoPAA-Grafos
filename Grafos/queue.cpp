@@ -18,8 +18,8 @@ void Queue<type>::append(type *v)
     } else {
         e->setNext(first);
     }
-
     first = e;
+    last->setNext(NULL);
 }
 
 template <class type>
@@ -29,9 +29,7 @@ type *Queue<type>::popBegin()
     Element<type> *tmp;
     if(first != NULL){
         e = first;
-        tmp = first;
         first = first->getNext();
-        tmp = tmp->getNext();
     }
     return e->getElement();
 }
@@ -48,7 +46,6 @@ type *Queue<type>::extractLess()
             if(*(e->getElement()) < *(tmp->getElement())){
                 e = tmp;
             }
-
             tmp = tmp->getNext();
         }
     }
@@ -61,10 +58,7 @@ bool Queue<type>::isEmpty()
 {
     qDebug() << "Entrou";
     qDebug() << "first is = "<< first;
-    while(first != NULL){
-
-    }
-    return (first->getNext() == NULL);
+    return (first == NULL);
 }
 
 template <class type>

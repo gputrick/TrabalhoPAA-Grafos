@@ -30,6 +30,7 @@ void BreadthFirstSearch::run()
                 va->setDistance(v->getDistance()+1);
                 Q->append(va);
             }else qDebug() << "ja esta cinza";
+
         }
         v->setColor(Qt::black);
         qDebug() << "pintou de preto";
