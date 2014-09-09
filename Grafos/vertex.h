@@ -1,9 +1,10 @@
 #ifndef VERTEX_H
 #define VERTEX_H
 
+#define INFINITO 10000
+
 #include <QDebug>
 #include <QColor>
-
 #include "edge.h"
 
 class Vertex
@@ -17,11 +18,12 @@ protected:
     int edgeNumber; // número de arestas
     QColor color; // cor do vértice
     Edge *edge;
-    Vertex *father;
+    Vertex *parent;
     int x;
     int y;
 
 public:
+    bool operator< (const Vertex &v) const;
     Vertex(int id, QString name, int x, int y);
     void add(int id1, int id2, int w);
     Edge *getEdge();
@@ -30,11 +32,12 @@ public:
     int getY();
     QColor getColor();
     void setColor(QColor color);
-    void setFather(Vertex *v);
+    void setParent(Vertex *v);
     int getDistance();
     void setDistance(int distance);
-
     ~Vertex();
+    int getEdgeNumber() const;
+    void setEdgeNumber(int value);
 };
 
 #endif // VERTEX_H

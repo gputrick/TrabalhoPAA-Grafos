@@ -1,14 +1,18 @@
+#ifndef QUEUE_CPP
+#define QUEUE_CPP
 #include "queue.h"
 
-Queue::Queue()
+template <class type>
+Queue<type>::Queue()
 {
     first = NULL;
     last  = NULL;
 }
 
-void Queue::append(void *v)
+template <class type>
+void Queue<type>::append(type *v)
 {
-    Element *e = new Element(v);
+    Element<type> *e = new Element<type>(v);
     if(first == NULL){
         last = e;
     } else {
@@ -18,10 +22,11 @@ void Queue::append(void *v)
     first = e;
 }
 
-void *Queue::popBegin()
+template <class type>
+Element<type> *Queue<type>::popBegin()
 {
-    void *e = NULL;
-    Element *tmp;
+    Element<type> *e = NULL;
+    Element<type> *tmp;
 
     if(first != NULL){
         e = first->getElement();
@@ -33,14 +38,38 @@ void *Queue::popBegin()
     return e;
 }
 
-bool Queue::isEmpty()
+template <class type>
+type *Queue<type>::extractLess()
+{
+    Element<type> *e = NULL, *tmp = NULL;
+
+    if(first != NULL){
+        e = first;
+        tmp = first->getNext();
+        while(tmp != NULL){
+            if(*(e->getElement()) < *(tmp->getElement())){
+                e = tmp;
+            }
+
+            tmp = tmp->getNext();
+        }
+    }
+
+    return e->getElement();
+}
+
+template <class type>
+bool Queue<type>::isEmpty()
 {
     return (first == NULL);
 }
 
-Queue::~Queue()
+template <class type>
+Queue<type>::~Queue()
 {
     if(first != NULL){
         delete first;
     }
 }
+
+#endif

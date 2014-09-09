@@ -14,14 +14,12 @@ CONFIG += c++11
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-        queue.cpp \
         graph.cpp \
         vertex.cpp \
         edge.cpp \
         Algorithms/breadthfirstsearch.cpp \
         Algorithms/deepfirstsearch.cpp \
         Algorithms/kruskal.cpp \
-    element.cpp \
     Algorithms/prim.cpp
 
 HEADERS  += mainwindow.h \

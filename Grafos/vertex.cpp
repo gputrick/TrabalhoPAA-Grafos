@@ -1,5 +1,21 @@
 #include "vertex.h"
 
+
+int Vertex::getEdgeNumber() const
+{
+    return edgeNumber;
+}
+
+void Vertex::setEdgeNumber(int value)
+{
+    edgeNumber = value;
+}
+
+bool Vertex::operator< (const Vertex &v) const
+{
+    return distance < v.distance;
+}
+
 Vertex::Vertex(int id, QString name, int x, int y)
 {
     this->id = id;
@@ -12,7 +28,7 @@ Vertex::Vertex(int id, QString name, int x, int y)
     this->edgeNumber = 0;
     this->color = Qt::white;
     this->edge = NULL;
-    this->father = NULL;
+    this->parent = NULL;
 }
 
 void Vertex::add(int id1, int id2, int w)
@@ -50,9 +66,9 @@ void Vertex::setColor(QColor color)
     this->color = color;
 }
 
-void Vertex::setFather(Vertex *v)
+void Vertex::setParent(Vertex *v)
 {
-    this->father = v;
+    this->parent = v;
 }
 
 int Vertex::getDistance()

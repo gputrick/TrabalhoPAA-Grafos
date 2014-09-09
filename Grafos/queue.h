@@ -5,17 +5,22 @@
 #include "vertex.h"
 #include "element.h"
 
+
+template <class type>
 class Queue
 {
 private:
-    Element *first;
-    Element *last;
+    Element<type> *first;
+    Element<type> *last;
 public:
     Queue();
-    void append(void *v);
-    void *popBegin();
+    void append(type *v);
+    Element<type> *popBegin();
+    type *extractLess();
     bool isEmpty();
     ~Queue();
 };
+
+#include "queue.cpp"
 
 #endif // QUEUE_H

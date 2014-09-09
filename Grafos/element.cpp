@@ -1,28 +1,37 @@
+#ifndef ELEMENT_CPP
+#define ELEMENT_CPP
 #include "element.h"
 
-Element::Element(void *e)
+template <class type>
+Element<type>::Element(type *e)
 {
     this->element = e;
 }
 
-void Element::setNext(Element *n)
+template <class type>
+void Element<type>::setNext(Element<type> *n)
 {
     this->next = n;
 }
 
-Element *Element::getNext()
+template <class type>
+Element<type> *Element<type>::getNext()
 {
     return this->next;
 }
 
-void *Element::getElement()
+template <class type>
+type *Element<type>::getElement()
 {
     return this->element;
 }
 
-Element::~Element()
+template <class type>
+Element<type>::~Element()
 {
     if(next != nullptr){
         delete next;
     }
 }
+
+#endif /*ELEMENT_CPP*/

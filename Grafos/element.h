@@ -1,17 +1,20 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
+template <class type>
 class Element
 {
 private:
-    void *element;
-    Element *next;
+    type *element;
+    Element<type> *next;
 public:
-    Element(void *e);
-    void setNext(Element *n);
-    Element *getNext();
-    void *getElement();
+    Element(type *e);
+    void setNext(Element<type> *n);
+    Element<type> *getNext();
+    type *getElement();
     ~Element();
 };
+
+#include "element.cpp"
 
 #endif // ELEMENT_H
