@@ -12,12 +12,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow) {
 
     ui->setupUi(this);
-    this->ui->toolBar->addWidget( this->ui->labelInicial );
-    this->ui->toolBar->addWidget( this->ui->cbOrigem );
-    this->ui->statusBar->addWidget( this->ui->labelFinal  );
-    this->ui->statusBar->addWidget( this->ui->cbFinal );
-    this->ui->statusBar->addWidget( this->ui->textEdit );
-    this->ui->statusBar->addWidget( this->ui->pushButton );
+
+    //Posicina no centro do monitor
+    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+    int x = (screenGeometry.width() - this->width()) / 2;
+    int y = (screenGeometry.height() - this->height()) / 2;
+    this->move(x, y);
 
     QMainWindow::paintEvent(new QPaintEvent(this->geometry()));
     this->grafo=this->tmp=NULL;
@@ -68,7 +68,7 @@ void MainWindow::on_actionLoad_triggered() {
     qDebug() << QDir::currentPath();
     QString filename =  QFileDialog::getOpenFileName( this, tr("Open Document"),
                                                      QDir::currentPath(),
-                                                     tr("Document files (*.txt);All files (*.*)"), 0,
+                                                     tr("Document files (*.txt);;All files (*.*)"), 0,
                                                      QFileDialog::DontUseNativeDialog );
     if( !filename.isNull() ) {
         qDebug() << filename;
@@ -130,6 +130,11 @@ void MainWindow::on_actionLoad_triggered() {
 
         emit mostrar ( grafo );
     }
+}
+
+void MainWindow::on_actionSair_triggered()
+{
+    this->close();
 }
 
 MainWindow::~MainWindow() {
