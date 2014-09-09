@@ -10,17 +10,27 @@ QT       += core \
 TARGET = Grafos
 TEMPLATE = app
 
+CONFIG += c++11
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+        queue.cpp \
+        graph.cpp \
+        vertex.cpp \
+        edge.cpp \
+        Algorithms/breadthfirstsearch.cpp \
+        Algorithms/deepfirstsearch.cpp \
+        Algorithms/kruskal.cpp \
+    element.cpp
 
 HEADERS  += mainwindow.h \
-    aresta.h \
-    grafo.h \
-    vertice.h \
-    fila.h \
-    BFS.h \
-    dijkstra.h \
-    Kruskal.h
+        queue.h \
+        graph.h \
+        vertex.h \
+        edge.h \
+        Algorithms/breadthfirstsearch.h \
+        Algorithms/deepfirstsearch.h \
+        Algorithms/kruskal.h \
+    element.h
 
 FORMS    += mainwindow.ui

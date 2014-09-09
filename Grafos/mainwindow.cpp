@@ -1,12 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "grafo.h"
-
-#include <QFileDialog>
-#include <QDir>
-#include <QMessageBox>
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
@@ -20,8 +14,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->move(x, y);
 
     QMainWindow::paintEvent(new QPaintEvent(this->geometry()));
-    this->grafo=this->tmp=NULL;
-    connect( this, SIGNAL (mostrar(Grafo * )), this, SLOT(mostrarGrafo(Grafo*)) );
+    this->graph = this->tmp = NULL;
+    //connect( this, SIGNAL (mostrar(Grafo * )), this, SLOT(mostrarGrafo(Grafo*)) );
 }
 
 void MainWindow::paintEvent(QPaintEvent *) {
@@ -30,36 +24,37 @@ void MainWindow::paintEvent(QPaintEvent *) {
     QPainter painter(this);
     painter.setPen(Qt::SolidLine);
 
-    Vertice **vertice = tmp->getVertice();
-    Vertice *v, *v1, *v2;
-    Aresta *a;
-    int n = tmp->getVerticeCount();
+    Vertex **vertex = tmp->getVertex();
+    Vertex *v, *v1, *v2;
+    Edge *e;
+    int n = tmp->getVertexCount();
 
     // Pintar primeiramente as arestas
     painter.setPen( Qt::black );
     painter.setPen( Qt::SolidLine );
 
-    for (int i=0; i<n; i++) {
-        a=vertice[i]->getAresta();
-        while (a!=NULL) {
-            v1 = vertice[a->getIdV1()];
-            v2 = vertice[a->getIdV2()];
+    for (int i = 0; i < n; i++) {
+        e = vertex[i]->getEdge();
+        while (e!=NULL) {
+            v1 = vertex[e->getIdV1()];
+            v2 = vertex[e->getIdV2()];
             painter.drawLine( QPoint (v1->getX(), v1->getY()), QPoint (v2->getX(), v2->getY()) );
-            a = a->getNext();
+            e = e->getNext();
         }
     }
-    for (int i=0; i<n; i++) {
-        v=vertice[i];
-        painter.setBrush ( v->getCor() );
-        painter.setPen( (v->getCor()==Qt::white)? Qt::black : Qt::white );
+
+    for (int i = 0; i < n; i++) {
+        v = vertex[i];
+        painter.setBrush ( v->getColor() );
+        painter.setPen( (v->getColor() == Qt::white)? Qt::black : Qt::white );
         painter.drawEllipse( v->getX()-20,  v->getY()-20, 40, 40 );
         QRect r1 ( v->getX()-4,  v->getY()-8, v->getX()+4,  v->getY()+8 );
-        painter.drawText( r1, v->getNome() );
+        painter.drawText( r1, v->getName() );
     }
 }
 
-void MainWindow::mostrarGrafo ( Grafo *g ) {
-    this->tmp=g;
+void MainWindow::showGraph(Graph *g){
+    this->tmp = g;
     update ();
 }
 
@@ -83,20 +78,23 @@ void MainWindow::on_actionLoad_triggered() {
         QString line;
         QStringList sl;
 
-        if (grafo!=NULL) delete grafo;
+        if (graph != NULL){
+            delete graph;
+        }
+
         line = in.readLine();     // número de vértices
-        grafo = new Grafo ( line.toInt(), this );
+        graph = new Graph ( line.toInt(), this );
 
         ui->cbOrigem->clear();
         ui->cbFinal->clear();
-        bool loadvertice = true;
-        while(!in.atEnd() && loadvertice) {
+        bool loadvertex = true;
+        while(!in.atEnd() && loadvertex) {
             line = in.readLine();
-            if (line.length()>0 && line.at(0)!='(') {
+            if (line.length() > 0 && line.at(0) != '(') {
                 //line = 1,100,100 ==> nome vértice, coordenada x, coordenada y
                 sl = line.split(",");
-                if (sl.count()==3) {
-                    grafo->add( sl[0], sl[1].toInt(), sl[2].toInt() );
+                if (sl.count() == 3) {
+                    graph->add( sl[0], sl[1].toInt(), sl[2].toInt() );
                     ui->cbOrigem->addItem( sl[0] );
                     ui->cbFinal->addItem( sl[0] );
                 } else {
@@ -104,7 +102,7 @@ void MainWindow::on_actionLoad_triggered() {
                     return;
                 }
             } else
-                loadvertice = false;
+                loadvertex = false;
         }
         if (!in.atEnd()) {
             do {
@@ -115,7 +113,7 @@ void MainWindow::on_actionLoad_triggered() {
                 //qDebug() << line;
                 sl = line.split(",");
                 if (sl.count()==3)
-                    grafo->addAresta(sl[0], sl[1], sl[2].toInt() );
+                    graph->addEdge(sl[0], sl[1], sl[2].toInt() );
                 else {
                     QMessageBox::critical(this,"Carregar arestas", "Erro na estrutura do arquivo - nós [node, coord. x, coord. y]!");
                     return;
@@ -128,7 +126,7 @@ void MainWindow::on_actionLoad_triggered() {
         qDebug() << "Carregado com sucesso!";
         file.close();
 
-        emit mostrar ( grafo );
+        this->showGraph(graph);
     }
 }
 
@@ -138,8 +136,8 @@ void MainWindow::on_actionSair_triggered()
 }
 
 MainWindow::~MainWindow() {
-    if (grafo!=NULL)
-        delete grafo;
+    if (graph != NULL)
+        delete graph;
     delete ui;
 }
 

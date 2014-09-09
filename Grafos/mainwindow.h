@@ -3,12 +3,15 @@
 
 #include <QMainWindow>
 
-#include <grafo.h>
+#include "graph.h"
 
 #include <QRect>
 #include <QDesktopWidget>
 #include <QPainter>
 #include <QPaintEvent>
+#include <QFileDialog>
+#include <QDir>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;
@@ -17,27 +20,22 @@ class MainWindow;
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
-signals:
-    void mostrar ( Grafo * );
+private:
+    void showGraph ( Graph * );
+    Ui::MainWindow *ui;
+    Graph *graph, *tmp;
+
+protected:
+    virtual void paintEvent(QPaintEvent *);
 
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-public slots:
-    void mostrarGrafo ( Grafo * );
-
 private slots:
     void on_actionLoad_triggered();
     void on_actionSair_triggered();
     void on_pushButton_clicked();
-
-private:
-    Ui::MainWindow *ui;
-    Grafo *grafo, *tmp;
-
-protected:
-    virtual void paintEvent(QPaintEvent *);
 };
 
 #endif // MAINWINDOW_H
