@@ -21,7 +21,8 @@ SOURCES += main.cpp\
         Algorithms/breadthfirstsearch.cpp \
         Algorithms/deepfirstsearch.cpp \
         Algorithms/kruskal.cpp \
-    element.cpp
+    element.cpp \
+    Algorithms/prim.cpp
 
 HEADERS  += mainwindow.h \
         queue.h \
@@ -31,6 +32,7 @@ HEADERS  += mainwindow.h \
         Algorithms/breadthfirstsearch.h \
         Algorithms/deepfirstsearch.h \
         Algorithms/kruskal.h \
-    element.h
+    element.h \
+    Algorithms/prim.h
 
 FORMS    += mainwindow.ui

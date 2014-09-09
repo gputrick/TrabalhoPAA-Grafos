@@ -6,10 +6,10 @@ Vertex::Vertex(int id, QString name, int x, int y)
     this->name = name;
     this->x = x;
     this->y = y;
-    this->ti = 0;
-    this->to = 0;
-    this->d = 0;
-    this->n_a = 0;
+    this->exitTime = 0;
+    this->entranceTime = 0;
+    this->distance = 0;
+    this->edgeNumber = 0;
     this->color = Qt::white;
     this->edge = NULL;
     this->father = NULL;
@@ -55,14 +55,14 @@ void Vertex::setFather(Vertex *v)
     this->father = v;
 }
 
-int Vertex::getD()
+int Vertex::getDistance()
 {
-    return this->d;
+    return this->distance;
 }
 
-void Vertex::setD(int d)
+void Vertex::setDistance(int d)
 {
-    this->d = d;
+    this->distance = d;
 }
 
 Vertex::~Vertex()

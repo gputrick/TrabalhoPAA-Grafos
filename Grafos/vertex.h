@@ -11,10 +11,10 @@ class Vertex
 protected:
     int id; // Index do vétice no vetor
     QString name;
-    int ti; // tempo de entrada
-    int to; // tempo de saida
-    int d;  // distância
-    int n_a; // número de arestas
+    int exitTime; // tempo de entrada
+    int entranceTime; // tempo de saida
+    int distance;  // distância
+    int edgeNumber; // número de arestas
     QColor color; // cor do vértice
     Edge *edge;
     Vertex *father;
@@ -31,8 +31,8 @@ public:
     QColor getColor();
     void setColor(QColor color);
     void setFather(Vertex *v);
-    int getD();
-    void setD(int d);
+    int getDistance();
+    void setDistance(int distance);
 
     ~Vertex();
 };

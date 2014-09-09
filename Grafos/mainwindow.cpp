@@ -36,8 +36,8 @@ void MainWindow::paintEvent(QPaintEvent *) {
     for (int i = 0; i < n; i++) {
         e = vertex[i]->getEdge();
         while (e!=NULL) {
-            v1 = vertex[e->getIdV1()];
-            v2 = vertex[e->getIdV2()];
+            v1 = vertex[e->getCoordX()];
+            v2 = vertex[e->getCoordY()];
             painter.drawLine( QPoint (v1->getX(), v1->getY()), QPoint (v2->getX(), v2->getY()) );
             e = e->getNext();
         }
