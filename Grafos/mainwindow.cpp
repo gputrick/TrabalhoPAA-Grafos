@@ -37,13 +37,8 @@ void MainWindow::paintEvent(QPaintEvent *) {
     for (int i = 0; i < n; i++) {
         e = vertex[i]->getEdge();
         while (e!=NULL) {
-<<<<<<< HEAD
             v1 = vertex[e->getSourceID()];
             v2 = vertex[e->getTargetID()];
-=======
-            v1 = vertex[e->getId1()];
-            v2 = vertex[e->getId2()];
->>>>>>> 31f4c362641391bf8f3a9c26f58fc8c88e000cc2
             painter.drawLine( QPoint (v1->getX(), v1->getY()), QPoint (v2->getX(), v2->getY()) );
             e = e->getNext();
         }
@@ -148,7 +143,7 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::on_pushButton_clicked(){
-<<<<<<< HEAD
+    //BreadthFirstSearch* BFS = new BreadthFirstSearch(this->tmp->getVertex());
     if(graph != NULL){
         this->prim = new Prim(0, this->graph);
         connect(prim, SIGNAL(repaint()), this, SLOT(repaint()), Qt::QueuedConnection);
@@ -159,8 +154,4 @@ void MainWindow::on_pushButton_clicked(){
 void MainWindow::repaint()
 {
     this->update();
-=======
-    BreadthFirstSearch* BFS = new BreadthFirstSearch(this->tmp->getVertex());
-    QMessageBox::about(this,"teste","eba");
->>>>>>> 31f4c362641391bf8f3a9c26f58fc8c88e000cc2
 }
