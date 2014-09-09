@@ -12,13 +12,16 @@ class Queue
 private:
     Element<type> *first;
     Element<type> *last;
+    unsigned int size;
 public:
     Queue();
     void append(type *v);
+    void removeElement(Element<type>*);
     Element<type> *popBegin();
-    type *extractLess();
+    type *extractSmaller();
     bool isEmpty();
     ~Queue();
+    unsigned int getSize() const;
 };
 
 #include "queue.cpp"

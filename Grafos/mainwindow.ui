@@ -7,20 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>641</width>
-    <height>455</height>
+    <height>489</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Projeto e Analise de Algoritmos (Ciência da Compuação)</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>330</y>
       <width>621</width>
-      <height>81</height>
+      <height>102</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -60,7 +60,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>8</x>

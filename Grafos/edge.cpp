@@ -2,8 +2,8 @@
 
 Edge::Edge(int id1, int id2, int w)
 {
-    this->coordX  = id1; // origem
-    this->coordY  = id2; // destino
+    this->sourceID  = id1; // origem
+    this->targetID  = id2; // destino
     this->weight    = w;
     this->next = NULL;
 }
@@ -22,14 +22,14 @@ int Edge::getWeight()
     return this->weight;
 }
 
-int Edge::getCoordX()
+int Edge::getSourceID()
 {
-    return this->coordX;
+    return this->sourceID;
 }
 
-int Edge::getCoordY()
+int Edge::getTargetID()
 {
-    return this->coordY;
+    return this->targetID;
 }
 
 Edge *Edge::getNext()
@@ -39,7 +39,7 @@ Edge *Edge::getNext()
 
 Edge::~Edge()
 {
-    qDebug() << "Excluindo aresta (" << coordX <<","<< coordY <<"," << weight << ")";
+    qDebug() << "Excluindo aresta (" << sourceID <<","<< targetID <<"," << weight << ")";
 
     if (this->next != NULL){
         delete this->next;

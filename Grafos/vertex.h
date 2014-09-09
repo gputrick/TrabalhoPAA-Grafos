@@ -23,11 +23,11 @@ protected:
     int y;
 
 public:
-    bool operator< (const Vertex &v) const;
+    bool operator> (const Vertex &v) const;
     Vertex(int id, QString name, int x, int y);
     void add(int id1, int id2, int w);
     Edge *getEdge();
-    QString getName();
+    QString getName() const;
     int getX();
     int getY();
     QColor getColor();

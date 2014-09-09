@@ -7,14 +7,17 @@
 #include "vertex.h"
 #include "graph.h"
 
-class Prim : QThread
+class Prim : public QThread
 {
+    Q_OBJECT
+private:
     int initialVertice;
     Graph *graph;
-private:
     void run();
 public:
     Prim(int initialVertice, Graph *graph);
+signals:
+    void repaint();
 };
 
 #endif // PRIM_H

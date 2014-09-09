@@ -11,9 +11,10 @@ void Vertex::setEdgeNumber(int value)
     edgeNumber = value;
 }
 
-bool Vertex::operator< (const Vertex &v) const
+bool Vertex::operator> (const Vertex &v) const
 {
-    return distance < v.distance;
+    qDebug() << this->name << " " << this->distance << " " << v.getName() << " " << v.distance;
+    return (this->distance > v.distance);
 }
 
 Vertex::Vertex(int id, QString name, int x, int y)
@@ -41,7 +42,7 @@ Edge *Vertex::getEdge()
     return this->edge;
 }
 
-QString Vertex::getName()
+QString Vertex::getName() const
 {
     return this->name;
 }
