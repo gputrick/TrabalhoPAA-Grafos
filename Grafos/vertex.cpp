@@ -33,7 +33,6 @@ void Vertex::setExitTime(int value)
 }
 bool Vertex::operator> (const Vertex &v) const
 {
-    qDebug() << this->name << " " << this->distance << " " << v.getName() << " " << v.distance;
     return (this->distance > v.distance);
 }
 

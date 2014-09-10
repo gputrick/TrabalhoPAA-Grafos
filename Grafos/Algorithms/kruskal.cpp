@@ -2,9 +2,9 @@
 
 void Kruskal::run()
 {
-
 }
 
-Kruskal::Kruskal()
+Kruskal::Kruskal(Graph *graph)
 {
+    this->graph = graph;
 }

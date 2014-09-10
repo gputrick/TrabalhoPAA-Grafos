@@ -88,6 +88,7 @@ void MainWindow::on_actionLoad_triggered() {
 
         ui->cbOrigem->clear();
         ui->cbFinal->clear();
+
         bool loadvertex = true;
         while(!in.atEnd() && loadvertex) {
             line = in.readLine();
@@ -161,6 +162,10 @@ void MainWindow::on_pushButton_clicked(){
             topologicalSort->start();
             break;
         case DIJKSTRA:
+            this->dijkstra = new Dijkstra(ui->cbOrigem->currentIndex(), ui->cbFinal->currentIndex(), this->graph);
+            connect(dijkstra, SIGNAL(repaint()), this, SLOT(repaint()), Qt::QueuedConnection);
+            connect(dijkstra, SIGNAL(finished()), this, SLOT(finished()));
+            dijkstra->start();
             break;
         case PRIM:
             this->prim = new Prim(ui->cbOrigem->currentIndex(), this->graph);

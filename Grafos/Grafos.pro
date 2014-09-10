@@ -23,7 +23,8 @@ SOURCES += main.cpp\
         Algorithms/kruskal.cpp \
     element.cpp \
     Algorithms/prim.cpp \
-    Algorithms/topologicalsort.cpp
+    Algorithms/topologicalsort.cpp \
+    Algorithms/dijkstra.cpp
 
 HEADERS  += mainwindow.h \
         queue.h \
@@ -35,6 +36,7 @@ HEADERS  += mainwindow.h \
         Algorithms/kruskal.h \
     element.h \
     Algorithms/prim.h \
-    Algorithms/topologicalsort.h
+    Algorithms/topologicalsort.h \
+    Algorithms/dijkstra.h
 
 FORMS    += mainwindow.ui

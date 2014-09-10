@@ -8,6 +8,7 @@
 #include "Algorithms/prim.h"
 #include "Algorithms/deepfirstsearch.h"
 #include "Algorithms/topologicalsort.h"
+#include "Algorithms/dijkstra.h"
 
 #include <QRect>
 #include <QDesktopWidget>
@@ -31,6 +32,7 @@ private:
     Prim *prim;
     DeepFirstSearch *DFS;
     TopologicalSort *topologicalSort;
+    Dijkstra *dijkstra;
 
     enum Algorithm {DEEPFIRSTSEARCH, BREADTHFIRSTSEARCH, TOPOLOGICALSORT, DIJKSTRA, PRIM, KRUSKAL, FORDFULKERSON};
 
