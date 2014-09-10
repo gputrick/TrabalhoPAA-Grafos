@@ -11,10 +11,12 @@ class BreadthFirstSearch: public QThread
 {
    Q_OBJECT
 private:
+    int InitialVertex;
+    int FinalVertex;
     Graph *graph;
     void run();
 public:
-    BreadthFirstSearch(Graph *graph);
+    BreadthFirstSearch(int InitialVertex, int FinalVertex, Graph *graph);
 signals:
     void repaint();
     void finished();

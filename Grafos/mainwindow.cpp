@@ -153,7 +153,7 @@ void MainWindow::on_pushButton_clicked(){
             DFS->start();
             break;
         case BREADTHFIRSTSEARCH:
-            this->BFS = new BreadthFirstSearch(this->graph);
+            this->BFS = new BreadthFirstSearch(ui->cbOrigem->currentIndex(), ui->cbFinal->currentIndex(), this->graph);
             connect(BFS, SIGNAL(repaint()), this, SLOT(repaint()), Qt::QueuedConnection);
             connect(BFS, SIGNAL(finished()), this, SLOT(finished()));
             BFS->start();

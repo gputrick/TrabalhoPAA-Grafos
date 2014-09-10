@@ -10,7 +10,7 @@ void BreadthFirstSearch::run()
     Vertex *v, *va;
     Edge *edge;
 
-    for(int i = 1; i < graph->getVertexCount(); i++){
+    for(int i = 0; i < graph->getVertexCount(); i++){
         vertex[i]->setParent(NULL);
         vertex[i]->setColor(Qt::white);
         vertex[i]->setDistance(INT_MAX);
@@ -19,12 +19,10 @@ void BreadthFirstSearch::run()
     emit repaint();
     sleep(1);
 
-    vertex[0]->setParent(NULL);
-    vertex[0]->setColor(Qt::gray);
-    vertex[0]->setDistance(INT_MAX);
+    vertex[InitialVertex]->setColor(Qt::gray);
     emit repaint();
 
-    Q->append(vertex[0]);
+    Q->append(vertex[InitialVertex]);
     while(!Q->isEmpty()){
 
        Element<Vertex> *e = Q->popBegin();
@@ -52,7 +50,9 @@ void BreadthFirstSearch::run()
     emit finished();
 }
 
-BreadthFirstSearch::BreadthFirstSearch(Graph *graph)
+BreadthFirstSearch::BreadthFirstSearch(int InitialVertex, int FinalVertex, Graph *graph)
 {
     this->graph = graph;
+    this->InitialVertex = InitialVertex;
+    this->FinalVertex = FinalVertex;
 }
