@@ -144,7 +144,6 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::on_pushButton_clicked(){
-    //BreadthFirstSearch* BFS = new BreadthFirstSearch(this->tmp->getVertex());
     if(graph != NULL){
         switch (ui->algorithm->currentIndex()) {
         case DEEPFIRSTSEARCH:
@@ -154,6 +153,10 @@ void MainWindow::on_pushButton_clicked(){
             DFS->start();
             break;
         case BREADTHFIRSTSEARCH:
+            this->BFS = new BreadthFirstSearch(this->graph);
+            connect(BFS, SIGNAL(repaint()), this, SLOT(repaint()), Qt::QueuedConnection);
+            connect(BFS, SIGNAL(finished()), this, SLOT(finished()));
+            BFS->start();
             break;
         case TOPOLOGICALSORT:
             this->topologicalSort = new TopologicalSort(ui->cbOrigem->currentIndex(), ui->cbFinal->currentIndex(), this->graph);

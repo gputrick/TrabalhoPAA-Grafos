@@ -7,6 +7,7 @@
 #include "vertex.h"
 #include "Algorithms/prim.h"
 #include "Algorithms/deepfirstsearch.h"
+#include "Algorithms/breadthfirstsearch.h"
 #include "Algorithms/topologicalsort.h"
 #include "Algorithms/dijkstra.h"
 
@@ -31,6 +32,7 @@ private:
     Graph *graph, *tmp;
     Prim *prim;
     DeepFirstSearch *DFS;
+    BreadthFirstSearch *BFS;
     TopologicalSort *topologicalSort;
     Dijkstra *dijkstra;
 
