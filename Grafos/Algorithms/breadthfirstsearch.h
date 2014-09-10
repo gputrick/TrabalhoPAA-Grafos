@@ -1,7 +1,7 @@
 #ifndef BREADTHFIRSTSEARCH_H
 #define BREADTHFIRSTSEARCH_H
 
-#include "vertex.h";
+#include "vertex.h"
 
 class BreadthFirstSearch
 {

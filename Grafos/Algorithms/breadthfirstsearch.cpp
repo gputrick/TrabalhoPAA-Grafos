@@ -1,7 +1,7 @@
 #include "breadthfirstsearch.h"
 #include "queue.h"
 
-BreadthFirstSearch::BreadthFirstSearch(Vertex **vertex)
+/*BreadthFirstSearch::BreadthFirstSearch(Vertex **vertex)
 {
     int size = 11; //hack
     Queue *queue = new Queue();
@@ -31,4 +31,4 @@ BreadthFirstSearch::BreadthFirstSearch(Vertex **vertex)
         }
     }
     delete queue;
-}
+}*/

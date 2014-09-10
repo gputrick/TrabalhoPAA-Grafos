@@ -2,8 +2,8 @@
 
 Edge::Edge(int id1, int id2, int w)
 {
-    this->Id1  = id1; // origem
-    this->Id2  = id2; // destino
+    this->sourceID  = id1; // origem
+    this->targetID  = id2; // destino
     this->weight    = w;
     this->next = NULL;
 }

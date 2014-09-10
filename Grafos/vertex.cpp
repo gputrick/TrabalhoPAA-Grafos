@@ -72,6 +72,11 @@ void Vertex::setParent(Vertex *v)
     this->parent = v;
 }
 
+Vertex *Vertex::getParent()
+{
+    return this->parent;
+}
+
 int Vertex::getDistance()
 {
     return this->distance;

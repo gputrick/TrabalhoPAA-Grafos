@@ -33,6 +33,7 @@ public:
     QColor getColor();
     void setColor(QColor color);
     void setParent(Vertex *v);
+    Vertex *getParent();
     int getDistance();
     void setDistance(int distance);
     ~Vertex();

@@ -40,7 +40,7 @@ void Prim::run()
     }
 
     delete queue;
-
+    emit finished();
 }
 
 Prim::Prim(int initialVertice, Graph *graph)

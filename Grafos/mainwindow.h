@@ -41,6 +41,7 @@ private slots:
 
 public slots:
     void repaint();
+    void finished();
 };
 
 #endif // MAINWINDOW_H

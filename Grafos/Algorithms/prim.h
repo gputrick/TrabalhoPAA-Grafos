@@ -18,6 +18,7 @@ public:
     Prim(int initialVertice, Graph *graph);
 signals:
     void repaint();
+    void finished();
 };
 
 #endif // PRIM_H

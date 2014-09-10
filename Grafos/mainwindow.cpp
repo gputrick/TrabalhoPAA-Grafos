@@ -145,8 +145,9 @@ MainWindow::~MainWindow() {
 void MainWindow::on_pushButton_clicked(){
     //BreadthFirstSearch* BFS = new BreadthFirstSearch(this->tmp->getVertex());
     if(graph != NULL){
-        this->prim = new Prim(0, this->graph);
+        this->prim = new Prim(ui->cbOrigem->currentIndex(), this->graph);
         connect(prim, SIGNAL(repaint()), this, SLOT(repaint()), Qt::QueuedConnection);
+        connect(prim, SIGNAL(finished()), this, SLOT(finished()));
         prim->start();
     }
 }
@@ -154,4 +155,20 @@ void MainWindow::on_pushButton_clicked(){
 void MainWindow::repaint()
 {
     this->update();
+}
+
+void MainWindow::finished()
+{
+    Vertex *vertex = this->graph->getVertex()[ui->cbFinal->currentIndex()];
+    QString msg = "";
+    int cont = 0;
+    while (vertex->getParent() != NULL){
+        msg = vertex->getName() + msg;
+        msg = " -> " + msg;
+        vertex = vertex->getParent();
+        cont++;
+    }
+    msg = this->graph->getVertex()[ui->cbOrigem->currentIndex()]->getName() + msg;
+    qDebug() << msg;
+    this->ui->path->setText(msg);
 }
