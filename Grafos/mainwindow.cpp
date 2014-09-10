@@ -145,10 +145,14 @@ MainWindow::~MainWindow() {
 void MainWindow::on_pushButton_clicked(){
     //BreadthFirstSearch* BFS = new BreadthFirstSearch(this->tmp->getVertex());
     if(graph != NULL){
-        this->prim = new Prim(ui->cbOrigem->currentIndex(), this->graph);
+        /*this->prim = new Prim(ui->cbOrigem->currentIndex(), this->graph);
         connect(prim, SIGNAL(repaint()), this, SLOT(repaint()), Qt::QueuedConnection);
         connect(prim, SIGNAL(finished()), this, SLOT(finished()));
-        prim->start();
+        prim->start();*/
+        this->DFS = new DeepFirstSearch(ui->cbOrigem->currentIndex(), ui->cbFinal->currentIndex(), this->graph);
+        connect(DFS, SIGNAL(repaint()), this, SLOT(repaint()), Qt::QueuedConnection);
+        connect(DFS, SIGNAL(finished()), this, SLOT(finished()));
+        DFS->start();
     }
 }
 

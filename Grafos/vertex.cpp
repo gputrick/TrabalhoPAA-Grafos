@@ -11,6 +11,26 @@ void Vertex::setEdgeNumber(int value)
     edgeNumber = value;
 }
 
+
+int Vertex::getEntranceTime() const
+{
+    return entranceTime;
+}
+
+void Vertex::setEntranceTime(int value)
+{
+    entranceTime = value;
+}
+
+int Vertex::getExitTime() const
+{
+    return exitTime;
+}
+
+void Vertex::setExitTime(int value)
+{
+    exitTime = value;
+}
 bool Vertex::operator> (const Vertex &v) const
 {
     qDebug() << this->name << " " << this->distance << " " << v.getName() << " " << v.distance;

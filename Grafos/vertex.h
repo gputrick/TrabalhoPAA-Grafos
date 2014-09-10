@@ -39,6 +39,10 @@ public:
     ~Vertex();
     int getEdgeNumber() const;
     void setEdgeNumber(int value);
+    int getEntranceTime() const;
+    void setEntranceTime(int value);
+    int getExitTime() const;
+    void setExitTime(int value);
 };
 
 #endif // VERTEX_H

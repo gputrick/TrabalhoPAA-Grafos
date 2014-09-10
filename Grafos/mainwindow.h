@@ -5,6 +5,7 @@
 
 #include "graph.h"
 #include "Algorithms/prim.h"
+#include "Algorithms/deepfirstsearch.h"
 
 #include <QRect>
 #include <QDesktopWidget>
@@ -26,6 +27,7 @@ private:
     Ui::MainWindow *ui;
     Graph *graph, *tmp;
     Prim *prim;
+    DeepFirstSearch *DFS;
 
 protected:
     virtual void paintEvent(QPaintEvent *);
