@@ -13,7 +13,7 @@ void Dijkstra::run()
     Edge *edge;
     Vertex **V = graph->getVertex();
 
-    for ( int i = 0; i < graph->getVertexCount(); i++ ) {
+    for(int i = 0; i < graph->getVertexCount(); i++){
         V[i]->setColor(Qt::white);
         V[i]->setParent(NULL);
         V[i]->setDistance(INFINITO);
