@@ -102,7 +102,7 @@
           <widget class="QComboBox" name="cbOrigem"/>
          </item>
          <item>
-          <widget class="QComboBox" name="comboBox">
+          <widget class="QComboBox" name="algorithm">
            <item>
             <property name="text">
              <string>Deep-fist Search</string>

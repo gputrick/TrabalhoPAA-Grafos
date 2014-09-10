@@ -22,7 +22,8 @@ SOURCES += main.cpp\
         Algorithms/deepfirstsearch.cpp \
         Algorithms/kruskal.cpp \
     element.cpp \
-    Algorithms/prim.cpp
+    Algorithms/prim.cpp \
+    Algorithms/topologicalsort.cpp
 
 HEADERS  += mainwindow.h \
         queue.h \
@@ -33,6 +34,7 @@ HEADERS  += mainwindow.h \
         Algorithms/deepfirstsearch.h \
         Algorithms/kruskal.h \
     element.h \
-    Algorithms/prim.h
+    Algorithms/prim.h \
+    Algorithms/topologicalsort.h
 
 FORMS    += mainwindow.ui

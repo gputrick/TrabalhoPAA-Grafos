@@ -59,13 +59,10 @@ template <class type>
 Element<type> *Queue<type>::popBegin()
 {
     Element<type> *e = NULL;
-    Element<type> *tmp;
 
     if(first != NULL){
-        e = first->getElement();
-        tmp = first;
+        e = first;
         first = first->getNext();
-        delete tmp;
     }
 
     return e;

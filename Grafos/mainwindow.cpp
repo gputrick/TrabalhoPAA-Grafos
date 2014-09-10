@@ -145,14 +145,36 @@ MainWindow::~MainWindow() {
 void MainWindow::on_pushButton_clicked(){
     //BreadthFirstSearch* BFS = new BreadthFirstSearch(this->tmp->getVertex());
     if(graph != NULL){
-        /*this->prim = new Prim(ui->cbOrigem->currentIndex(), this->graph);
-        connect(prim, SIGNAL(repaint()), this, SLOT(repaint()), Qt::QueuedConnection);
-        connect(prim, SIGNAL(finished()), this, SLOT(finished()));
-        prim->start();*/
-        this->DFS = new DeepFirstSearch(ui->cbOrigem->currentIndex(), ui->cbFinal->currentIndex(), this->graph);
-        connect(DFS, SIGNAL(repaint()), this, SLOT(repaint()), Qt::QueuedConnection);
-        connect(DFS, SIGNAL(finished()), this, SLOT(finished()));
-        DFS->start();
+        switch (ui->algorithm->currentIndex()) {
+        case DEEPFIRSTSEARCH:
+            this->DFS = new DeepFirstSearch(ui->cbOrigem->currentIndex(), ui->cbFinal->currentIndex(), this->graph);
+            connect(DFS, SIGNAL(repaint()), this, SLOT(repaint()), Qt::QueuedConnection);
+            connect(DFS, SIGNAL(finished()), this, SLOT(finished()));
+            DFS->start();
+            break;
+        case BREADTHFIRSTSEARCH:
+            break;
+        case TOPOLOGICALSORT:
+            this->topologicalSort = new TopologicalSort(ui->cbOrigem->currentIndex(), ui->cbFinal->currentIndex(), this->graph);
+            connect(topologicalSort, SIGNAL(repaint()), this, SLOT(repaint()), Qt::QueuedConnection);
+            connect(topologicalSort, SIGNAL(finished()), this, SLOT(finished()));
+            topologicalSort->start();
+            break;
+        case DIJKSTRA:
+            break;
+        case PRIM:
+            this->prim = new Prim(ui->cbOrigem->currentIndex(), this->graph);
+            connect(prim, SIGNAL(repaint()), this, SLOT(repaint()), Qt::QueuedConnection);
+            connect(prim, SIGNAL(finished()), this, SLOT(finished()));
+            prim->start();
+            break;
+        case KRUSKAL:
+            break;
+        case FORDFULKERSON:
+            break;
+        default:
+            break;
+        }
     }
 }
 
@@ -163,6 +185,26 @@ void MainWindow::repaint()
 
 void MainWindow::finished()
 {
+    if(ui->algorithm->currentIndex() == TOPOLOGICALSORT){
+        QStringList strList;
+        Element<Vertex> *e;
+
+        while(true){
+            e = topologicalSort->getQueue()->popBegin();
+            if(e == NULL) break;
+            strList.append(e->getElement()->getName());
+        }
+
+        QString str = "";
+        for(int i = 0; i < strList.size() - 1; i++)
+            str += strList.at(i) + " - ";
+        str += strList.at(strList.size() -1);
+
+        this->ui->path->setText(str);
+
+        return;
+    }
+
     Vertex *vertex = this->graph->getVertex()[ui->cbFinal->currentIndex()];
     QString msg = "";
     int cont = 0;

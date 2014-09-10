@@ -4,8 +4,10 @@
 #include <QMainWindow>
 
 #include "graph.h"
+#include "vertex.h"
 #include "Algorithms/prim.h"
 #include "Algorithms/deepfirstsearch.h"
+#include "Algorithms/topologicalsort.h"
 
 #include <QRect>
 #include <QDesktopWidget>
@@ -28,6 +30,9 @@ private:
     Graph *graph, *tmp;
     Prim *prim;
     DeepFirstSearch *DFS;
+    TopologicalSort *topologicalSort;
+
+    enum Algorithm {DEEPFIRSTSEARCH, BREADTHFIRSTSEARCH, TOPOLOGICALSORT, DIJKSTRA, PRIM, KRUSKAL, FORDFULKERSON};
 
 protected:
     virtual void paintEvent(QPaintEvent *);
